@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio Page</title>
+    <!-- to add more sections, just add it to the 2 parts below section, and then look at .portfolio stuff-->
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -27,12 +28,12 @@
             overflow: hidden;
         }
         section {
-            padding: 20px 0;
+            padding: 5px 0;
         }
-        .intro, .portfolio, .contact {
-            margin-bottom: 20px;
+        .intro, .portfolio, .work-experience, .contact {
+            margin-bottom: 10px;
         }
-        .intro h2, .portfolio h2, .contact h2 {
+        .intro h2, .portfolio h2, .work-experience h2, .contact h2 {
             border-bottom: 2px solid #333;
             padding-bottom: 10px;
         }
@@ -45,7 +46,7 @@
             border: 1px solid #ddd;
             border-radius: 5px;
             margin: 10px;
-            padding: 20px;
+            padding: 15px;
             flex: 1 1 calc(33% - 40px);
             box-sizing: border-box;
         }
@@ -57,12 +58,22 @@
         .portfolio-item h3 {
             margin: 10px 0;
         }
+        .work-experience-item {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin: 10px 0;
+            padding: 15px;
+        }
+        .work-experience-item h3 {
+            margin-top: 0;
+        }
         footer {
             background-color: #333;
             color: #fff;
             text-align: center;
             padding: 10px 0;
-            position: absolute;
+            position: relative;
             bottom: 0;
             width: 100%;
         }
@@ -112,6 +123,21 @@
                 </div>
                 <!-- Add more portfolio items here -->
             </div>
+        </section>
+        
+        <section class="work-experience">
+            <h2>Work Experience</h2>
+            <div class="work-experience-item">
+                <h3>Engineering Internship</h3>
+                <p><strong>Whitethorn Games</strong> | m-m 2023, m-current 2024</p>
+                <p>Brief description of your responsibilities and achievements in this role. Highlight any significant projects or skills gained.</p>
+            </div>
+            <div class="work-experience-item">
+                <h3>Job Title 2</h3>
+                <p><strong>Company Name</strong> | Start Date – End Date</p>
+                <p>Brief description of your responsibilities and achievements in this role. Highlight any significant projects or skills gained.</p>
+            </div>
+            <!-- Add more work experience items here -->
         </section>
 
         <section class="contact">
