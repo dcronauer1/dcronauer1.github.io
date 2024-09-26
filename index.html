@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio Page</title>
-    <!-- to add more sections, just add it to the 2 parts below section, and then look at .portfolio stuff-->
+    <title>Dominic Cronauer | Portfolio</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -13,51 +12,87 @@
             color: #333;
             background-color: #f4f4f4;
         }
+
         header {
             background-color: #333;
             color: #fff;
             padding: 10px 0;
             text-align: center;
         }
+
         header h1 {
             margin: 0;
         }
+
         .container {
             width: 80%;
             margin: 0 auto;
-            overflow: hidden;
         }
+
         section {
             padding: 5px 0;
         }
+
         .intro, .portfolio, .work-experience, .contact {
             margin-bottom: 10px;
         }
+
         .intro h2, .portfolio h2, .work-experience h2, .contact h2 {
             border-bottom: 2px solid #333;
             padding-bottom: 10px;
         }
+
         .portfolio-items {
             display: flex;
             flex-wrap: wrap;
+            justify-content: space-between; /* Add space between items */
         }
-        .portfolio-item {
+
+        .portfolio-item, .portfolio-items a {
             background: #fff;
             border: 1px solid #ddd;
             border-radius: 5px;
             margin: 10px;
             padding: 15px;
-            flex: 1 1 calc(33% - 40px);
+            flex: 1 1 calc(33.33% - 20px);
             box-sizing: border-box;
+            text-decoration: none;
+            color: inherit;
+            display: inline-block;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%; 
+            overflow: hidden; /* Ensure content doesn't overflow */
         }
-        .portfolio-item img {
+
+        .portfolio-items a:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .portfolio-item img, .portfolio-items a img {
             max-width: 100%;
+            max-height: 100%;
             height: auto;
+            width: auto;
             border-radius: 5px;
+            display: block;
+            margin: 0 auto;
+            object-fit: contain; /* Ensure the image is contained within the area */
         }
-        .portfolio-item h3 {
-            margin: 10px 0;
+
+        .image-container {
+            background-color: #F0F0F0;
+            padding: 2px;
+            border-radius: 4px;
+            display: flex; /* Use flexbox to center the content */
+            justify-content: center; /* Horizontally center the image */
+            align-items: center; /* Vertically center the image */        
+            flex-grow: 1; /* Make the image container grow to fill the available space */
+            overflow: contain; /* Ensure content doesn't overflow the container */
+            width: 100%;
+            height: 60%; /* Occupy 60% of the portfolio item height */
         }
+
         .work-experience-item {
             background: #fff;
             border: 1px solid #ddd;
@@ -65,79 +100,103 @@
             margin: 10px 0;
             padding: 15px;
         }
+
         .work-experience-item h3 {
             margin-top: 0;
         }
+
         footer {
             background-color: #333;
             color: #fff;
             text-align: center;
             padding: 10px 0;
-            position: relative;
-            bottom: 0;
             width: 100%;
         }
+
         @media (max-width: 768px) {
-            .portfolio-item {
-                flex: 1 1 calc(50% - 40px);
+            .portfolio-item, .portfolio-items a {
+                flex: 1 1 calc(50% - 20px);
             }
         }
+
         @media (max-width: 480px) {
-            .portfolio-item {
+            .portfolio-item, .portfolio-items a {
                 flex: 1 1 100%;
             }
         }
+        .github-button {
+    display: inline-block;
+    background-color: #333; /* GitHub black */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.github-button:hover {
+    background-color: #555; /* Slightly lighter on hover */
+}
+        
     </style>
 </head>
 <body>
     <header>
         <div class="container">
             <h1>Dominic Cronauer</h1>
-            <p>Computer Engineer</p>
+            <p>Computer Engineer | Mathematics Major</p>
         </div>
     </header>
 
     <div class="container">
         <section class="intro">
             <h2>About Me</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ac eros vel velit faucibus sollicitudin. Vivamus quis ultrices nunc, eget aliquam elit.</p>
+            <p>Allen please add details</p>
+            <a href="https://github.com/dcronauer1?tab=repositories" target="_blank" class="github-button">View My GitHub</a>
         </section>
+        
 
         <section class="portfolio">
             <h2>My Work</h2>
             <div class="portfolio-items">
                 <div class="portfolio-item">
-                    <img src="project1.jpg" alt="Project 1">
-                    <h3>Jenkins Unity Build Machine</h3>
-                    <p>An automated system to pull, build, and upload Unity builds to development kits. Featured one controller and multiple nodes. Faster than building on developer machines with similar hardware.</p>
+                    <h3>Jenkins Unity Build Server</h3>
+                    <p>An automated system to pull, build, and upload Unity builds to development kits. Consists of one controller and multiple, scalable nodes. Faster than building on developer machines with similar hardware.</p>
+                    <div class="image-container">
+                        <img src="pictures/Jenkins_logo.png" alt="Project 1">
+                    </div>
                 </div>
-                <div class="portfolio-item">
-                    <img src="project2.jpg" alt="Project 2">
+                <a href="https://github.com/dcronauer1/Pong-in-MIPS" target="_blank">
                     <h3>Pong in MIPS (assembly)</h3>
-                    <p>Modular version of Pong made in MIPS. Mostly faithful to the original, except the user is able to modify game parameters (such as ball speed, ai level, paddle sizes, etc).</p>
-                </div>
-                <div class="portfolio-item">
-                    <img src="project3.jpg" alt="Project 3">
+                    <p>Modular version of Pong made in MIPS. Mostly faithful to the original, except the user is able to modify game parameters (such as ball speed, AI level, paddle sizes, etc.).</p>
+                    <div class="image-container">
+                        <img src="pictures/pongScreenshot.png" alt="Project 2">
+                    </div>
+                </a>
+                <a href="https://github.com/dcronauer1/Tetris-in-Java" target="_blank">
                     <h3>Tetris in Java</h3>
-                    <p>Somewhat advanced version of Tetris in Java. Utilizes the ___ library, and some provided starter code. 90% of the project is self done.</p>
-                </div>
-                <!-- Add more portfolio items here -->
+                    <p>Made utilizing the wheelsunh.jar library. Includes most quality of life features from modern versions of Tetris.</p>
+                    <div class="image-container">
+                        <img src="pictures/TetrisScreenshot.png" alt="Project 3">
+                    </div>
+                </a>
             </div>
         </section>
-        
+
         <section class="work-experience">
             <h2>Work Experience</h2>
             <div class="work-experience-item">
-                <h3>Engineering Internship</h3>
-                <p><strong>Whitethorn Games</strong> | m-m 2023, m-current 2024</p>
-                <p>Brief description of your responsibilities and achievements in this role. Highlight any significant projects or skills gained.</p>
+                <h3>Engineering Internship | IT Specialist | QA Tester</h3>
+                <p><strong>Whitethorn Games</strong> | Summer 2023, Summer 2024-Present</p>
+                <p>
+                    Designed and Implemented a Jenkins Unity Build & Deployment Server
+                    <br>Performed various IT duties, including data wiping, reinstalling and optimizing Windows, and implementing general optimizations. Responsibilities also included inventorying equipment and allocating technical resources.
+                    <br>QA tested <a href="https://store.steampowered.com/app/2231190/Magical_Delicacy/" target="_blank">Magical Delicacy</a> and <a href="https://store.steampowered.com/app/2000210/Mythwrecked_Ambrosia_Island/" target="_blank">Mythwrecked</a>
+                    <br>Currently working on implementing a headless virtual machine cluster for running multiple instances of OBS
+                </p>
             </div>
-            <div class="work-experience-item">
-                <h3>Job Title 2</h3>
-                <p><strong>Company Name</strong> | Start Date – End Date</p>
-                <p>Brief description of your responsibilities and achievements in this role. Highlight any significant projects or skills gained.</p>
-            </div>
-            <!-- Add more work experience items here -->
         </section>
 
         <section class="contact">
