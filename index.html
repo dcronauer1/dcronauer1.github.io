@@ -43,54 +43,53 @@
         }
 
         .portfolio-items {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between; /* Add space between items */
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            
         }
-
         .portfolio-item, .portfolio-items a {
             background: #fff;
             border: 1px solid #ddd;
             border-radius: 5px;
-            margin: 10px;
-            padding: 15px;
-            flex: 1 1 calc(33.33% - 20px);
+            padding: 15px; /*inner box spacing*/
+            padding-top:5px;
+            padding-bottom:15px;
+            flex: 1 1 calc(33.33% - 10px);
             box-sizing: border-box;
             text-decoration: none;
             color: inherit;
-            display: inline-block;
+            display: flex;
+            flex-direction: column;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             height: 100%; 
-            overflow: hidden; /* Ensure content doesn't overflow */
-        }
+            overflow: hidden; /*ensure content doesn't overflow */
 
+        }
+        .portfolio-item h3, .portfolio-items a h3 {
+            margin-bottom: 10px;
+            margin-top: 15px;
+        }
         .portfolio-items a:hover {
             transform: scale(1.02);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
-
         .portfolio-item img, .portfolio-items a img {
-            max-width: 100%;
-            max-height: 100%;
-            height: auto;
-            width: auto;
-            border-radius: 5px;
-            display: block;
-            margin: 0 auto;
-            object-fit: contain; /* Ensure the image is contained within the area */
-        }
-
-        .image-container {
-            background-color: #F0F0F0;
-            padding: 2px;
+            max-width: calc(90% - 8px);/*better centering*/
+            max-height: auto;
+            object-fit: contain;
+            background-color: #F3F3F3;
+            border: 3px solid #F3F3F3;
             border-radius: 4px;
-            display: flex; /* Use flexbox to center the content */
-            justify-content: center; /* Horizontally center the image */
-            align-items: center; /* Vertically center the image */        
-            flex-grow: 1; /* Make the image container grow to fill the available space */
-            overflow: contain; /* Ensure content doesn't overflow the container */
-            width: 100%;
-            height: 60%; /* Occupy 60% of the portfolio item height */
+            margin: 5px auto;
+            margin-bottom: auto;
+            margin-top: auto;
+            display: block; /* ensures it's treated as a block-level element */
+        }
+        /*set how many rows an item takes up.
+        Reminder: linked items are under ""...-items a" */
+        .portfolio-item:nth-child(1) {
+            grid-row: span 2; 
         }
 
         .work-experience-item {
@@ -100,7 +99,6 @@
             margin: 10px 0;
             padding: 15px;
         }
-
         .work-experience-item h3 {
             margin-top: 0;
         }
@@ -112,34 +110,54 @@
             padding: 10px 0;
             width: 100%;
         }
-
-        @media (max-width: 768px) {
-            .portfolio-item, .portfolio-items a {
-                flex: 1 1 calc(50% - 20px);
-            }
-        }
-
-        @media (max-width: 480px) {
-            .portfolio-item, .portfolio-items a {
-                flex: 1 1 100%;
-            }
-        }
         .github-button {
-    display: inline-block;
-    background-color: #333;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
-    text-align: center;
-    text-decoration: none;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-}
-
-.github-button:hover {
-    background-color: #555; /* Slightly lighter on hover */
-}
-        
+            display: inline-block;
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-align: center;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        .github-button:hover {
+            background-color: #555; /* Slightly lighter on hover */
+        }
+        /*2 columns*/
+        @media (max-width: 980px) {
+            .portfolio-items{
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .portfolio-item img, .portfolio-items a img{
+                max-height:230px;
+            }
+            /*set row sizing when there are 2 columns*/
+            .portfolio-item:nth-child(1),.portfolio-items a:nth-child(2),
+            .portfolio-items a:nth-child(3),.portfolio-items a:nth-child(6) {
+            grid-row: span 2; 
+            }
+            /*make pong picture bigger*/
+            .portfolio-items a img:nth-child(2){
+                max-width: calc(100% - 8px);
+                max-height: 100%;
+            }
+        }
+        /*1 column*/
+        @media (max-width: 680px) {
+            .portfolio-items{
+                grid-template-columns: 1fr;
+            }
+            .portfolio-item img, .portfolio-items a img{
+                max-height: 250px;
+                margin-top:10px;
+            }
+            /*set row sizing when there is 1 column*/
+            .portfolio-item:nth-child(1),.portfolio-items a:nth-child(2),
+            .portfolio-items a:nth-child(3),.portfolio-items a:nth-child(6) {
+            grid-row: span 1; 
+            }
+        }
     </style>
 </head>
 <body>
@@ -164,39 +182,49 @@
             <div class="portfolio-items">
                 <div class="portfolio-item">
                     <h3>Jenkins Unity Build Server</h3>
-                    <p>An automated system to pull, build, and upload Unity builds to development kits. Consists of one controller and multiple, scalable nodes. Faster than building on developer machines with similar hardware.</p>
-                    <div class="image-container">
-                        <img src="pictures/Jenkins_logo.png" alt="Project 1">
-                    </div>
+                    An automated system to pull, build, and upload Unity builds to development kits. Consists of one controller and multiple, scalable nodes.
+                    <br style="margin-top:6px"><b>Benefits:</b>
+                        <ul style="padding-left:10px; margin:0px">
+                            <li>Up to 65% faster build times.</li>
+                            <li>Allowed developers to use their development environments while building</li>
+                            <li>Automatic pulling, building, and uploading to dev consoles with configurable triggers</li>
+                        </ul>
+                    <img src="pictures/Jenkins_logo.png" alt="Project 1">                    
                 </div>
+
                 <a href="https://github.com/dcronauer1/Pong-in-MIPS" target="_blank">
                     <h3>Pong in MIPS (assembly)</h3>
-                    <p>Modular version of Pong made in MIPS. Mostly faithful to the original, except the user is able to modify game parameters (such as ball speed, AI level, paddle sizes, etc.).</p>
-                    <div class="image-container">
-                        <img src="pictures/pongScreenshot.png" alt="Project 2">
-                    </div>
+                    Modular version of Pong made in MIPS. Mostly faithful to the original, except the user is able to modify game parameters (such as ball speed, AI level, paddle sizes, etc.).
+                    <img src="pictures/pongScreenshot.png" alt="Project 2">
                 </a>
+                
                 <a href="https://github.com/dcronauer1/Tetris-in-Java" target="_blank">
                     <h3>Tetris in Java</h3>
-                    <p>Made utilizing the wheelsunh.jar library. Includes most quality of life features from modern versions of Tetris.</p>
-                    <div class="image-container">
-                        <img src="pictures/TetrisScreenshot.png" alt="Project 3">
-                    </div>
+                    Made utilizing the wheelsunh library. Includes most quality of life features from modern versions of Tetris.
+                    <img src="pictures/TetrisScreenshot.png" alt="Project 3">
                 </a>
+
                 <div class="portfolio-item">
                     <h3>Soldering</h3>
-                    <p>I've repaired a NES, SNES, and 3DS. I've also worked on a Virtual Boy, and  </p>
-                    <div class="image-container">
-                        <img src="picture/here" alt="">
-                    </div>
+                    I've repaired a NES, SNES, and 3DS. I've also worked on a Virtual Boy. I'm still learning how to effectively use an oscilloscope to diagnose issues.
+                    <!--<img src="picture/here" alt="">-->
                 </div>
+
                 <div class="portfolio-item">
                     <h3>PC building</h3>
-                    <p>I've built 5 PC's from scratch, with most of those being for friends. I had to do everything from researching which parts to get, staying within a budget, and putting the computer together.</p>
-                    <div class="image-container">
-                        <img src="picture/here" alt="">
-                    </div>
+                    I've built five custom PCs from scratch, mostly for friends. This involved everything from researching components, staying within budget, and assembling the computer.
+                   <!-- <img src="picture/here" alt="">-->
                 </div>
+
+                <div class="portfolio-item">
+                    <h3>Server Administration</h3>
+                    I've successfully set up, ran, and maintained several video game servers, with Minecraft and SCP:SL being the most notable.
+                        <br>At their peak, my Minecraft servers hosted up to 30 active players, while my SCP:SL community grew to over 200-300 people at its peak.
+                        <br>One of the biggest challenges was trying to cultivate and maintain active community engagement.
+                        <br>Additionally, troubleshooting networking issues was another major challenge.
+                
+                </div>
+
             </div>
         </section>
 
@@ -204,14 +232,13 @@
             <h2>Work Experience</h2>
             <div class="work-experience-item">
                 <h3>Engineering Internship | IT Specialist | QA Tester</h3>
-                <p><strong>Whitethorn Games</strong> | Summer 2023, Summer 2024-Present</p>
-                <p>
-                    <ul>
+                <!--make below a h4 and define it in css-->
+                <p style="margin-bottom:4px; margin-top:0px"><strong>Whitethorn Games</strong> | Summer 2023, Summer 2024-Present</p>
+                    <ul style="margin:0px;padding-left:15px">
                         <li>Designed and Implemented a Jenkins Unity Build & Deployment Server</li>
                         <li>Performed various IT duties, including data wiping, reinstalling and optimizing Windows, and implementing general optimizations. Responsibilities also included inventorying equipment and allocating technical resources.</li>
                     <li>QA tested <a href="https://store.steampowered.com/app/2231190/Magical_Delicacy/" target="_blank">Magical Delicacy</a> and <a href="https://store.steampowered.com/app/2000210/Mythwrecked_Ambrosia_Island/" target="_blank">Mythwrecked</a></li>
-                    </ul>
-                </p>
+                </ul>
             </div>
         </section>
 
@@ -219,10 +246,9 @@
             <h2>Certifications</h2>
             <div class="work-experience-item">
                 <h3>HAM Amateur Certified Technician</h3>
-                <p>During my time at Harbor Creek High School, I was one of the founding members of their Ham Radio club.
-                    <br>While there, we worked things such as building and setting up antennas, exchanging call signs with people, etc.
-                    <br>After I graduated, the club grew exponentially, and they contacted the ISS in late 2023.
-                </p>
+                During my time at Harbor Creek High School, I was one of the founding members of their Ham Radio club.
+                <br>While there, we worked things such as building and setting up antennas, exchanging call signs with people, etc.
+                <br>After I graduated, the club grew exponentially, and they contacted the ISS in late 2023.
             </div>
         </section>
         
