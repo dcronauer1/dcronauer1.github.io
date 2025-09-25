@@ -88,10 +88,11 @@
         }
         /*set how many rows an item takes up.
         Reminder: linked items are under ""...-items a" */
-        .portfolio-item:nth-child(1) {
+        /* 
+       .portfolio-item:nth-child(1) {
             grid-row: span 2; 
         }
-
+        */
         .work-experience-item {
             background: #fff;
             border: 1px solid #ddd;
@@ -101,6 +102,7 @@
         }
         .work-experience-item h3 {
             margin-top: 0;
+            margin-bottom: 13px;
         }
 
         footer {
@@ -158,6 +160,12 @@
             grid-row: span 1; 
             }
         }
+
+        br {
+            display: block;
+            margin-top: 8px;   /* adjust spacing */
+            content: " ";
+        }
     </style>
 </head>
 <body>
@@ -172,7 +180,7 @@
         <section class="intro">
             <h2>About Me</h2>
             <p><b>Welcome to my website!</b>
-                <br>Hi, I'm Dominic, a Junior currently pursuing a double major in Computer Engineering and Mathematics (CMPSC). My interests span across Electrical, Computer, and Software Engineering. While I'm still exploring the specific areas that captivate me the most, generally speaking, I enjoy trying to figure out and solve problems, especially related to computers.</p>
+                <br>Hi, I'm Dominic, a senior at Penn State Behrend pursuing a double major in Computer Engineering and Mathematics (CMPSC). I have a strong interest in Electrical, Computer, and Software Engineering. I'm passionate about problem-solving, and I enjoy tackling complex problems in systems and computing.</p>
             <a href="https://github.com/dcronauer1?tab=repositories" target="_blank" class="github-button">View My GitHub</a>
         </section>
         
@@ -181,48 +189,74 @@
             <h2>My Work</h2>
             <div class="portfolio-items">
                 <div class="portfolio-item">
-                    <h3>Jenkins Unity Build Server</h3>
-                    An automated system to pull, build, and upload Unity builds to development kits. Consists of one controller and multiple, scalable nodes.
-                    <br style="margin-top:6px"><b>Benefits:</b>
-                        <ul style="padding-left:10px; margin:0px">
-                            <li>Up to 65% faster build times.</li>
-                            <li>Allowed developers to use their development environments while building</li>
-                            <li>Automatic pulling, building, and uploading to dev consoles with configurable triggers</li>
+                    <h3>Hall Effect Sensor System</h3>
+                    Python project to read data from TMAG5173 magnetic sensors
+                    <br style="margin-top:10px"><b>Details:</b>
+                        <ul style="padding-left:10px; padding-right: 10px; margin:0px">
+                            Developed a Python system to read data from TMAG5173 Hall effect sensors. Data is sent from a MicroPython microcontroller to a Raspberry Pi via MQTT, stored in InfluxDB, and visualized in Grafana. The Raspberry Pi also sends commands back for motor control and other tasks.
                         </ul>
-                    <img src="pictures/Jenkins_logo.png" alt="Project 1">                    
                 </div>
+
+                <a href="https://github.com/dcronauer1/musicdownloadbot" target="_blank">
+                    <h3>YouTube Music Downloader</h3>
+                    Discord bot to automate downloading and syncing music from YouTube
+                    <br style="margin-top:10px"><b>Details:</b>
+                        <ul style="padding-left:10px; padding-right: 10px; margin:0px">
+                            Created a Discord bot that automates downloading and syncing music from YouTube. Built with Python, Discord.py, yt-dlp, and MusicBrainz, it supports playlists, custom metadata, retroactive updates, and automatic file syncing to devices via SSH.
+                        </ul>
+                    </br>
+                </a>
+                
+                <div class="portfolio-item">
+                    <h3>Jenkins Unity Build Server</h3>
+                    An automated system to pull, build, and upload Unity builds to development kits
+                    <br style="margin-top:10px"><b>Details:</b>
+                        <ul style="padding-left:10px; padding-right: 10px; margin:0px">
+                            Engineered a scalable Jenkins-based system to automate pulling, building, and deploying Unity builds to development kits. Reduced build times by up to 60% while allowing developers to continue working in their environments.
+                        </ul>
+                </div>
+
+                <div class="portfolio-item">
+                    <h3>Server Administration</h3>
+                    Managed and maintained video game servers, including Minecraft (30+ active players) and SCP:SL (200-300 peak users).
+                    <br>Focused on community engagement and troubleshooting networking issues.
+                </div>
+
+                <div class="portfolio-item">
+                    <h3>PC building</h3>
+                    Built five custom PCs from scratch, handling component selection, budgeting, and assembly.
+                </div>
+
+                <div class="portfolio-item">
+                    <h3>Cars</h3>
+                    I've self taught myself how to work on cars. This has allowed me to have a significantly deeper understanding of how cars work.
+                    <br>Replaced parts include: timing belt, water pump, radiator, thermostat, oil, and starter.
+                </div>
+
+                <div class="portfolio-item">
+                    <h3>Soldering</h3>
+                    Repaired retro gaming consoles including NES, SNES, 3DS, and Virtual Boy.
+                    <!--<img src="picture/here" alt="">-->
+                </div>
+
+            </div>
+        </section>
+
+        <section class="portfolio">
+            <h2>School Projects</h2>
+            <div class="portfolio-items">
 
                 <a href="https://github.com/dcronauer1/Pong-in-MIPS" target="_blank">
                     <h3>Pong in MIPS (assembly)</h3>
                     Modular version of Pong made in MIPS. Mostly faithful to the original, except the user is able to modify game parameters (such as ball speed, AI level, paddle sizes, etc.).
-                    <img src="pictures/pongScreenshot.png" alt="Project 2">
+                    <img src="pictures/pongScreenshot.png" alt="Pong-in-MIPS">
                 </a>
                 
                 <a href="https://github.com/dcronauer1/Tetris-in-Java" target="_blank">
                     <h3>Tetris in Java</h3>
                     Made utilizing the wheelsunh library. Includes most quality of life features from modern versions of Tetris.
-                    <img src="pictures/TetrisScreenshot.png" alt="Project 3">
+                    <img src="pictures/TetrisScreenshot.png" alt="Tetris-in-Java">
                 </a>
-
-                <div class="portfolio-item">
-                    <h3>Soldering</h3>
-                    I've repaired a NES, SNES, and 3DS. I've also worked on a Virtual Boy. I'm still learning how to effectively use an oscilloscope to diagnose issues.
-                    <!--<img src="picture/here" alt="">-->
-                </div>
-
-                <div class="portfolio-item">
-                    <h3>PC building</h3>
-                    I've built five custom PCs from scratch, mostly for friends. This involved everything from researching components, staying within budget, and assembling the computer.
-                   <!-- <img src="picture/here" alt="">-->
-                </div>
-
-                <div class="portfolio-item">
-                    <h3>Server Administration</h3>
-                    I've successfully set up, ran, and maintained several video game servers, with Minecraft and SCP:SL being the most notable.
-                        <br>My Minecraft servers hosted up to 30 active players, while my SCP:SL community grew to over 200-300 people at its peak.
-                        <br>One of the biggest challenges was trying to cultivate and maintain active community engagement.
-                        <br>Additionally, troubleshooting networking issues was another major challenge.
-                </div>
 
             </div>
         </section>
@@ -230,13 +264,38 @@
         <section class="work-experience">
             <h2>Work Experience</h2>
             <div class="work-experience-item">
+                <h3>Full Stack / Embedded Systems Intern</h3>
+                <!--make below a h4 and define it in css-->
+                <p style="margin-bottom:4px; margin-top:0px"><strong>PSNERGY</strong> | Summer 2025</p>
+                    <ul style="margin:0px;padding-left:15px">
+                        <li>Worked on embedded/IoT systems using Micropython, MQTT, InfluxDB, Grafana, and Linux.</li>
+                        <li>Assembled and tested sensor-based products</li>
+                        <li>Debugged hardware and software issues</li>
+                        <li>Analyzed sensor data</li>
+                        <li>Worked with breadboards and soldering</li>
+                        <li>Tested sensors to ensure they met requirements</li>
+                        <li>Assembled production devices following internal documentation.</li>
+                        <li>Troubleshot and debugged existing products</li>
+                </ul>
+            </div>
+            <div class="work-experience-item">
                 <h3>Engineering Internship | IT Specialist | QA Tester</h3>
                 <!--make below a h4 and define it in css-->
                 <p style="margin-bottom:4px; margin-top:0px"><strong>Whitethorn Games</strong> | Summer 2023, Summer 2024-Present</p>
                     <ul style="margin:0px;padding-left:15px">
-                        <li>Designed and Implemented a Jenkins Unity Build & Deployment Server</li>
-                        <li>Performed various IT duties, including data wiping, reinstalling and optimizing Windows, and implementing general optimizations. Responsibilities also included inventorying equipment and allocating technical resources.</li>
+                        <li>Engineered a Jenkins-based Unity build & deployment server, reducing build times by up to 60%</li>
+                        <li>Wrote user-friendly documentation for internal systems.</li>
+                        <li>Performed IT duties including system reimaging, optimization, and equipment inventory.</li>
                         <li>QA tested <a href="https://store.steampowered.com/app/2231190/Magical_Delicacy/" target="_blank">Magical Delicacy</a> and <a href="https://store.steampowered.com/app/2000210/Mythwrecked_Ambrosia_Island/" target="_blank">Mythwrecked</a></li>
+                </ul>
+            </div>
+            <div class="work-experience-item">
+                <h3>Teacher's Assistant</h3>
+                <!--make below a h4 and define it in css-->
+                <p style="margin-bottom:4px; margin-top:0px"><strong>Penn State Behrend</strong> | September 2025-Present</p>
+                    <ul style="margin:0px;padding-left:15px">
+                        <li>Assisted professor during labs, graded coursework, and supported students in CMPEN 371 (Advanced Digital Design).</li>
+                        <li>Reinforced Vivado and VHDL dataflow programming concepts.</li>
                 </ul>
             </div>
         </section>
@@ -245,9 +304,12 @@
             <h2>Certifications</h2>
             <div class="work-experience-item">
                 <h3>HAM Amateur Certified Technician</h3>
-                During my time at Harbor Creek High School, I was one of the founding members of their Ham Radio club.
-                <br>While there, we worked things such as building and setting up antennas, exchanging call signs with people, etc.
-                <br>After I graduated, the club grew exponentially, and they contacted the ISS in late 2023.
+                <ul style="margin:0px;padding-left:15px">
+                    <li>Founding member of Harbor Creek High School Ham Radio Club</li> 
+                    <li>Built and set up antennas for long-range communication</li>
+                    <li>Exchanged call signs internationally and coordinated contacts</li>
+                    <li>After graduation, club sucessfully contacted International Space Station in 2023</li>
+                </ul>
             </div>
         </section>
         
@@ -258,7 +320,7 @@
     </div>
 
     <footer>
-        <p>&copy; 2024 Dominic Cronauer. All Rights Reserved.</p>
+        <p>&copy; 2025 Dominic Cronauer. All Rights Reserved.</p>
     </footer>
 </body>
 </html>
